@@ -31,7 +31,7 @@
             const threadId = document.getElementById('threadId').value.trim();
             if (!threadId) { alert('Pon el threadId primero'); return; }
 
-            const socket = new SockJS('http://localhost:8080/ws');
+            const socket = new SockJS('http://54.211.3.94:8080/ws'); // cambias por la ip publica de la mv
             stompClient = Stomp.over(socket);
             stompClient.debug = null;
 
