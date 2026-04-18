@@ -3,6 +3,8 @@ package com.example.foroservice.Application.Services;
 import com.example.foroservice.Domain.Entities.Message;
 import com.example.foroservice.Domain.Repositories.MessageRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,6 +18,14 @@ public class MessageService {
 
     public List<Message> getByThreadId(String threadId){
         return messageRepository.findByThreadId(threadId);
+    }
+
+    public Page<Message> getByThreadIdPaginated(String threadId, Pageable pageable){
+        return messageRepository.findByThreadId(threadId, pageable);
+    }
+
+    public Page<Message> getAllPaginated(Pageable pageable){
+        return messageRepository.findAll(pageable);
     }
 
     public Message create(Message message) {
